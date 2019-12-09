@@ -118,13 +118,13 @@ def next_batch(data, batch_size, ind):
 
 
 ind = 0
-for step in range(1, 1000):
+for step in range(1, 1000000):
     batch_x, batch_y = next_batch(walks, BATCH_SIZE, ind)
     ind += batch_x.shape[0]
     ind = ind % len(walks)
     run_optimization(batch_x, batch_y)
 
-    if step % 10 == 0 or step == 1:
+    if step % 1000 == 0 or step == 1:
         loss = nce_loss(get_embedding(batch_x), batch_y)
         print("step: %i, loss: %f" % (step, loss))
 
